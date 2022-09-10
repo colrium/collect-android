@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_auth"
+    android:label="@string/fragment_login_title"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.colrium.collect.ui.auth.LoginFragment"
+        android:label="@string/fragment_login_title"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/navFromLoginToApplyForm"
+            app:destination="@id/applyFormFragment" />
+        <action
+            android:id="@+id/navFromLoginToForgotPassword"
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/navFromLoginToHome"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/applyFormFragment"
+        android:name="com.colrium.collect.ui.apply.ApplyFormFragment"
+        android:label="fragment_apply_form"
+        tools:layout="@layout/fragment_apply_form" >
+        <action
+            android:id="@+id/navFromApplyFormToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.colrium.collect.ui.auth.ForgotPasswordFragment"
+        android:label="@string/fragment_forgot_password_title">
+        <action
+            android:id="@+id/navFromForgotPasswordToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.colrium.collect.ui.main.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/navFromHomeToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+</navigation>

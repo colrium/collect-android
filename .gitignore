@@ -20,6 +20,16 @@ out/
 # Gradle files
 .gradle/
 build/
+**/build/
+**/release/
+**/releaseUnitTest/
+**/debug/
+**/debugUnitTest/
+**/test/
+**/testDebugUnitTest/
+**/testReleaseUnitTest/
+**/.idea
+
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -38,17 +48,17 @@ captures/
 
 # IntelliJ
 *.iml
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/gradle.xml
-.idea/assetWizardSettings.xml
-.idea/dictionaries
-.idea/libraries
+.idea.backup/workspace.xml
+.idea.backup/tasks.xml
+.idea.backup/gradle.xml
+.idea.backup/assetWizardSettings.xml
+.idea.backup/dictionaries
+.idea.backup/libraries
 # Android Studio 3 in .gitignore file.
-.idea/caches
-.idea/modules.xml
+.idea.backup/caches
+.idea.backup/modules.xml
 # Comment next line if keeping position of elements in Navigation Editor is relevant for you
-.idea/navEditor.xml
+.idea.backup/navEditor.xml
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.

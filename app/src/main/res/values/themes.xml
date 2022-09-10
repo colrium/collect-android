@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+
+        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+        <item name="colorOnPrimary">@color/secondaryTextColor</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
+        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="toolbarStyle">@style/AppTheme.toolbarStyle</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceOverlay.Pill.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceOverlay.Pill.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceOverlay.Pill.Large</item>
+
+        <!-- Background and surface. -->
+        <item name="colorSurface">@color/surfaceColor</item>
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="colorOnBackground">@color/primaryTextColor</item>
+        <item name="colorOnSurface">@color/primaryTextColor</item>
+
+
+    </style>
+
+    <style name="AppTheme.toolbarStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="titleTextColor">@color/secondaryTextColor</item>
+    </style>
+    <style name="AppTheme.MainActivity" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+    <style name="AppTheme.AuthActivity" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
+    <style name="AppTheme.SplashActivity" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryLightColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+        <item name="android:statusBarColor">@color/primaryLightColor</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+
+    </style>
+</resources>
