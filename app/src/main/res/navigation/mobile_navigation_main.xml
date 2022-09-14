@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.colrium.collect.ui.main.HomeFragment"
+        android:name="com.colrium.collect.fragments.main.HomeFragment"
         android:label="@string/fragment_home_title"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.colrium.collect.ui.main.SettingsFragment"
+        android:name="com.colrium.collect.fragments.main.SettingsFragment"
         android:label="SettingsFragment" >
         <action
             android:id="@+id/navSettingsToHome"

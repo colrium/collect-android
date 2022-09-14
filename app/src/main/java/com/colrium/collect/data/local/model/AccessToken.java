@@ -19,7 +19,7 @@ import java.util.UUID;
 @Entity(tableName = AccessToken.TABLE_NAME, foreignKeys = @ForeignKey(entity=Client.class, parentColumns="id", childColumns="client_id"))
 public class AccessToken {
 	public static final String TABLE_NAME = "access_tokens";
-	@SerializedName("_id")
+	@SerializedName("id")
 	@PrimaryKey
 	@NonNull
 	@ColumnInfo(name = "id")
@@ -32,6 +32,14 @@ public class AccessToken {
 	@SerializedName("refresh_token")
 	@ColumnInfo(name = "refresh_token")
 	private String refreshToken;
+
+	@SerializedName("issue_time")
+	@ColumnInfo(name = "issue_time")
+	private String issueTime;
+
+	@SerializedName("active")
+	@ColumnInfo(name = "active")
+	private Boolean active;
 
 	@SerializedName("created_on")
 	@ColumnInfo(name = "created_on")
@@ -54,13 +62,13 @@ public class AccessToken {
 	private String lastUpdatedOn;
 
 
-	@SerializedName("token_type")
-	@ColumnInfo(name = "token_type")
-	private String tokenType;
+	@SerializedName("type")
+	@ColumnInfo(name = "type")
+	private String type;
 
 	@SerializedName("expires_in")
 	@ColumnInfo(name = "expires_in")
-	private String expiresIn;
+	private Long expiresIn;
 
 
 	@SerializedName("token")
@@ -115,19 +123,35 @@ public class AccessToken {
 		return id;
 	}
 
-	public void setTokenType(String tokenType){
-		this.tokenType = tokenType;
+	public String getIssueTime() {
+		return issueTime;
 	}
 
-	public String getTokenType(){
-		return tokenType;
+	public void setIssueTime(String issueTime) {
+		this.issueTime = issueTime;
 	}
 
-	public void setExpiresIn(String expiresIn){
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public void setType(String type){
+		this.type = type;
+	}
+
+	public String getType(){
+		return type;
+	}
+
+	public void setExpiresIn(Long expiresIn){
 		this.expiresIn = expiresIn;
 	}
 
-	public String getExpiresIn(){
+	public Long getExpiresIn(){
 		return expiresIn;
 	}
 

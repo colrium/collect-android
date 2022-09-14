@@ -1,34 +1,50 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!--<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
         <item name="colorOnPrimary">@color/secondaryTextColor</item>
-        <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-        <item name="toolbarStyle">@style/AppTheme.toolbarStyle</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceOverlay.Pill.Small</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceOverlay.Pill.Medium</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceOverlay.Pill.Large</item>
-
-        <!-- Background and surface. -->
         <item name="colorSurface">@color/surfaceColor</item>
         <item name="android:colorBackground">@color/backgroundColor</item>
         <item name="colorOnBackground">@color/primaryTextColor</item>
         <item name="colorOnSurface">@color/primaryTextColor</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="toolbarStyle">@style/AppTheme.toolbarStyle</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.Material3.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.Material3.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.Material3.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Material3.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Material3.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Material3.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Material3.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Material3.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.Material3.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Material3.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Material3.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Material3.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Material3.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.Material3.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.Material3.LabelSmall</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Material3.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.LargeComponent</item>
 
-
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 
-    <style name="AppTheme.toolbarStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
+    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/ModalBottomSheetDialog</item>
+    </style>
+
+    <style name="AppTheme.toolbarStyle" parent="Widget.Material3.Toolbar">
         <item name="titleTextColor">@color/secondaryTextColor</item>
     </style>
     <style name="AppTheme.MainActivity" parent="AppTheme">
@@ -39,12 +55,13 @@
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">false</item>
     </style>
-    <style name="AppTheme.SplashActivity" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
+    <style name="AppTheme.SplashActivity" parent="Theme.Material3.DayNight.NoActionBar">
+        <!--<item name="android:windowBackground">@drawable/splash_background</item>-->
+        <item name="android:windowBackground">@color/surfaceColor</item>
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryLightColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
-        <item name="android:statusBarColor">@color/primaryLightColor</item>
+        <item name="android:statusBarColor">@color/surfaceColor</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

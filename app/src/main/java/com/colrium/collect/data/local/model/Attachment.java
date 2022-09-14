@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Attachment {
     public static final String TABLE_NAME = "attachments";
 
-    @SerializedName("_id")
+    @SerializedName("id")
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")

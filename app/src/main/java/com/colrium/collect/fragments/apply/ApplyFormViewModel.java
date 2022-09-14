@@ -1,4 +1,4 @@
-package com.colrium.collect.ui.apply;
+package com.colrium.collect.fragments.apply;
 
 import androidx.lifecycle.ViewModel;
 

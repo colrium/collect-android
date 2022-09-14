@@ -2,30 +2,61 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.main.HomeFragment">
+    tools:context=".fragments.main.HomeFragment">
 
     <data>
 
     </data>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <fragment
+        <!--<fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" />-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_anchor="@id/bottomSheet"/>
+        <FrameLayout
+            android:id="@+id/bottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="?attr/colorSurface"
+            style="@style/Widget.Material3.BottomSheet.Modal"
+            android:clipToPadding="true"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
+            <com.colrium.collect.views.BottomSheetDragHandleView
+                android:id="@+id/bottomSheetDragHandleView"
+                android:layout_width="match_parent"
+                style="@style/Widget.Material3.BottomSheet.DragHandle"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <include  layout="@layout/bottom_sheet_persistent" />
+            </LinearLayout>
 
+        </FrameLayout>
+        <!--<include  layout="@layout/bottom_sheet_persistent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--        <include layout="@layout/bottom_sheet_persistent" />-->
-    </FrameLayout>
+
 
 </layout>

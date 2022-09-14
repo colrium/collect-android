@@ -1,8 +1,7 @@
-package com.colrium.collect.ui.auth;
+package com.colrium.collect.fragments.auth;
 
 import android.content.Context;
 import android.util.ArrayMap;
-import android.util.Log;
 import android.util.Patterns;
 
 import androidx.annotation.Nullable;
@@ -10,9 +9,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,23 +17,12 @@ import com.colrium.collect.R;
 import com.colrium.collect.data.remote.api.ApiClient;
 import com.colrium.collect.data.remote.api.interfaces.AuthInterface;
 import com.colrium.collect.config.Constants;
-import com.colrium.collect.data.local.model.Attachment;
-import com.colrium.collect.data.local.model.Client;
 import com.colrium.collect.data.local.model.SessionWithAccessTokenAndUser;
 import com.colrium.collect.data.remote.Result;
 import com.colrium.collect.data.remote.auth.login.LoginResponse;
-import com.colrium.collect.data.remote.auth.login.ResponseData;
 import com.colrium.collect.data.local.database.AppDatabase;
-import com.colrium.collect.data.local.database.AppExecutors;
-import com.colrium.collect.data.local.model.AccessToken;
-import com.colrium.collect.data.local.model.Session;
-import com.colrium.collect.data.local.model.User;
 import com.colrium.collect.data.local.repository.SessionRepository;
 import com.colrium.collect.utility.AppPreferences;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginViewModel extends ViewModel {
     private static final String LOG_TAG = LoginViewModel.class.getSimpleName();

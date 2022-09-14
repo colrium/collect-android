@@ -10,7 +10,7 @@ public class ResponseData {
     @SerializedName("profile")
     private User user;
 
-    @SerializedName("token")
+    @SerializedName("access_token")
     private AccessToken accessToken;
 
     public ResponseData setUser(User profile){

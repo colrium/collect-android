@@ -1,4 +1,4 @@
-package com.colrium.collect.ui.auth;
+package com.colrium.collect.fragments.auth;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,8 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.colrium.collect.databinding.FragmentLoginBinding;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.Gson;
 
 
 import java.util.ArrayList;
@@ -41,19 +40,16 @@ import com.colrium.collect.data.local.model.SessionWithAccessTokenAndUser;
 
 import com.colrium.collect.R;
 import com.colrium.collect.data.local.model.User;
-import com.colrium.collect.data.remote.Result;
 import com.colrium.collect.data.remote.api.ApiClient;
 import com.colrium.collect.data.remote.auth.login.LoginResponse;
 import com.colrium.collect.data.remote.auth.login.ResponseData;
-import com.colrium.collect.databinding.FragmentLoginBinding;
 import com.colrium.formbuilder.base.FormError;
 import com.colrium.formbuilder.base.FormField;
 import com.colrium.formbuilder.base.FormValidationListener;
 import com.colrium.formbuilder.validation.ValidationNotEmpty;
 import com.colrium.formbuilder.validation.ValidationRegex;
 import com.colrium.formbuilder.Form;
-import com.colrium.collect.ui.AuthActivity;
-import com.colrium.collect.ui.MainActivity;
+import com.colrium.collect.AuthActivity;
 import com.colrium.collect.utility.AppPreferences;
 import retrofit2.Call;
 
@@ -123,7 +119,7 @@ public class LoginFragment extends Fragment {
                 AccessToken accessToken = data.getAccessToken();
                 Client client = accessToken != null? accessToken.getClient() : null;
                 SessionWithAccessTokenAndUser sessionWithAccessTokenAndUser = new SessionWithAccessTokenAndUser();
-
+                Log.d(LOG_TAG, "accessToken "+ApiClient.GSON.toJson(accessToken).toString());
                 Session session = new Session();
                 session.setAccessToken(accessToken);
                 session.setStatus("active");
@@ -135,19 +131,18 @@ public class LoginFragment extends Fragment {
                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                     @Override
                     public void run() {
-                        app.getAppDatabase().sessionDao().insert(session);
-                        if (user != null) {
-                            app.getAppDatabase().userDao().insert(user);
-                        }
                         if (avatar != null) {
                             app.getAppDatabase().attachmentDao().insert(avatar);
+                        }
+                        if (user != null) {
+                            app.getAppDatabase().userDao().insert(user);
                         }
                         if (client != null) {
                             app.getAppDatabase().clientDao().insert(client);
                         }
 
                         app.getAppDatabase().accessTokenDao().insert(accessToken);
-
+                        app.getAppDatabase().sessionDao().insert(session);
 
                     }
                 });
@@ -155,7 +150,9 @@ public class LoginFragment extends Fragment {
                 sessionWithAccessTokenAndUser.accessToken = accessToken;
                 sessionWithAccessTokenAndUser.user = user;
                 loginButton.setText(getString(R.string.action_sign_in_success));
-                app.getOnAuthListener().onLogin(sessionWithAccessTokenAndUser);
+                appPreferences.putString(Constants.PREF_HTTP_AUTHORIZATION_HEADER, sessionWithAccessTokenAndUser.accessToken.getType() +" "+sessionWithAccessTokenAndUser.accessToken.getToken());
+                appPreferences.putString(Constants.PREF_USER_SESSIONID, sessionWithAccessTokenAndUser.session.getId());
+                appPreferences.putBoolean(Constants.PREF_USER_AUTHENTICATED, true);
             }
 
             @Override

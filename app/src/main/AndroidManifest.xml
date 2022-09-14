@@ -39,8 +39,9 @@
             android:value="@string/google_maps_api_key"/>
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true"
+            android:noHistory="true"
             android:theme="@style/AppTheme.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,15 +50,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.MainActivity" />
+            android:configChanges="uiMode"
+            android:theme="@style/AppTheme.MainActivity">
+            <!--<meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />-->
+        </activity>
+
         <activity
-            android:name=".ui.AuthActivity"
+            android:name=".AuthActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.AuthActivity" />
+            android:theme="@style/AppTheme.AuthActivity" >
+            <!--<meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AuthActivity" />-->
+        </activity>
     </application>
 
 </manifest>

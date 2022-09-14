@@ -22,7 +22,7 @@ public class User {
     public static final String TABLE_NAME = "users";
 
 
-    @SerializedName("_id")
+    @SerializedName("id")
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")

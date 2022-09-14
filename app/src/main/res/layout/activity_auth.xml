@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AuthActivity">
-    <include
-        android:id="@+id/app_bar_auth"
-        layout="@layout/app_bar_auth"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    tools:context=".AuthActivity">
+    <include android:id="@+id/appBarAuth" layout="@layout/app_bar"/>
+    <include android:id="@+id/contentAuth" layout="@layout/content_auth" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

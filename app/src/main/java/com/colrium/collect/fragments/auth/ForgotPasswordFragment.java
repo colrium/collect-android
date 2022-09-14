@@ -1,4 +1,4 @@
-package com.colrium.collect.ui.auth;
+package com.colrium.collect.fragments.auth;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,12 +18,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.colrium.collect.databinding.FragmentForgotPasswordBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
 
 import com.colrium.collect.R;
-import com.colrium.collect.databinding.FragmentForgotPasswordBinding;
 import com.colrium.formbuilder.Form;
 import com.colrium.formbuilder.base.FormError;
 import com.colrium.formbuilder.base.FormField;

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.ArrayMap;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.colrium.collect.data.local.model.Attachment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.net.URISyntaxException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +26,9 @@ import com.colrium.collect.data.remote.Result;
 import com.colrium.collect.data.remote.api.interfaces.AuthInterface;
 import com.colrium.collect.data.remote.auth.login.LoginResponse;
 import com.colrium.collect.utility.AppPreferences;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,20 +42,22 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
+    private static final String LOG_TAG = ApiClient.class.getSimpleName();
     private Retrofit RETROFIT = null;
     private static ApiClient INSTANCE;
     private static Map<String, Object> HEADERS = new ArrayMap<>();
     private static Interceptor INTERCEPTOR;
-    private static Gson GSON = new GsonBuilder()
+    public static Gson GSON = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
             .create();
+
     private ApiClient() {
         RETROFIT = getRetrofitBuilder().build();
     }
 
     public static ApiClient getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new ApiClient();
+            INSTANCE = newInstance();
         }
         return INSTANCE;
     }
@@ -64,7 +72,7 @@ public class ApiClient {
                 @Override
                 public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
                     Request.Builder requestBuilder = chain.request().newBuilder();
-                    requestBuilder.addHeader("User-Agent", "Collect-App");
+                    requestBuilder.addHeader("User-Agent", "Collect-Android");
                     if (ApiClient.HEADERS != null && !ApiClient.HEADERS.isEmpty()){
                         Set<String> headerNames = ApiClient.HEADERS.keySet();
                         Iterator iterator = headerNames.iterator();
@@ -112,9 +120,22 @@ public class ApiClient {
         this.RETROFIT = r;
         return this;
     }
-
     public static Retrofit retrofit() {
         return getInstance().getRetrofit();
+    }
+    public static Gson gson() {
+        return GSON;
+    }
+
+    public static String fileUrl(String id){
+        if (id != null && !id.isEmpty())
+            return Constants.API_URL+"/attachments/download/"+id.trim();
+        return null;
+    }
+    public static String fileUrl(Attachment attachment){
+        if (attachment != null)
+            return fileUrl(attachment.getId());
+        return null;
     }
 
     public static class ApiCall<T>{

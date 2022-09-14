@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Session {
     public static final String TABLE_NAME = "sessions";
 
-    @SerializedName("_id")
+    @SerializedName("id")
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")

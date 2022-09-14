@@ -7,7 +7,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.colrium.collect.ui.auth.LoginFragment"
+        android:name="com.colrium.collect.fragments.auth.LoginFragment"
         android:label="@string/fragment_login_title"
         tools:layout="@layout/fragment_login" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/applyFormFragment"
-        android:name="com.colrium.collect.ui.apply.ApplyFormFragment"
+        android:name="com.colrium.collect.fragments.apply.ApplyFormFragment"
         android:label="fragment_apply_form"
         tools:layout="@layout/fragment_apply_form" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.colrium.collect.ui.auth.ForgotPasswordFragment"
+        android:name="com.colrium.collect.fragments.auth.ForgotPasswordFragment"
         android:label="@string/fragment_forgot_password_title">
         <action
             android:id="@+id/navFromForgotPasswordToLogin"
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.colrium.collect.ui.main.HomeFragment"
+        android:name="com.colrium.collect.fragments.main.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action

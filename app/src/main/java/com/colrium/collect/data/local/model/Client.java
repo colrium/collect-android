@@ -15,7 +15,7 @@ import org.bson.types.ObjectId;
 @Entity(tableName = Client.TABLE_NAME)
 public class Client{
 	public static final String TABLE_NAME = "clients";
-	@SerializedName("_id")
+	@SerializedName("id")
 	@PrimaryKey
 	@NonNull
 	private String id = new ObjectId().toString();

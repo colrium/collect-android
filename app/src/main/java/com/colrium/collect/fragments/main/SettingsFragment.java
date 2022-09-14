@@ -1,4 +1,4 @@
-package com.colrium.collect.ui.main;
+package com.colrium.collect.fragments.main;
 
 import android.os.Bundle;
 

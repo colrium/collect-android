@@ -1,4 +1,4 @@
-package com.colrium.collect.ui.auth;
+package com.colrium.collect.fragments.auth;
 
 import com.colrium.collect.data.local.model.SessionWithAccessTokenAndUser;
 

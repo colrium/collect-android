@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.auth.LoginFragment">
+    tools:context=".fragments.auth.LoginFragment">
     <data>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout

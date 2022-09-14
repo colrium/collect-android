@@ -1,16 +1,21 @@
-package com.colrium.collect.ui.main;
+package com.colrium.collect.fragments.main;
 
+import android.content.Context;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.colrium.collect.databinding.FragmentHomeBinding;
+import com.colrium.collect.views.BottomSheetDragHandleView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,22 +24,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.colrium.collect.R;
-import com.colrium.collect.databinding.FragmentHomeBinding;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    FrameLayout bottomSheet;
+    BottomSheetDragHandleView bottomSheetDragHandleView;
+    BottomSheetBehavior bottomSheetBehavior;
     private OnMapReadyCallback onMapReadyCallback = new OnMapReadyCallback() {
 
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
+
         @Override
         public void onMapReady(GoogleMap googleMap) {
             LatLng sydney = new LatLng(-34, 151);
@@ -42,14 +42,13 @@ public class HomeFragment extends Fragment {
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         }
     };
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        bottomSheetDragHandleView =  binding.bottomSheetDragHandleView;
+        bottomSheet =  binding.bottomSheet;
         View root = binding.getRoot();
-
         return root;
     }
 
@@ -61,11 +60,16 @@ public class HomeFragment extends Fragment {
         if (mapFragment != null) {
             mapFragment.getMapAsync(onMapReadyCallback);
         }
+//        setBottomSheetVisibility(false);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void setBottomSheetVisibility(Boolean isVisible){
+        bottomSheetBehavior.setState(isVisible? BottomSheetBehavior.STATE_EXPANDED : BottomSheetBehavior.STATE_COLLAPSED);
     }
 }
